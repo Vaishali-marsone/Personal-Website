@@ -1,0 +1,12 @@
+{
+  "/api": {
+    "target": "http://localhost:5155",
+    "secure": false,
+    "changeOrigin": true
+  },
+  "/resumes": {
+    "target": "http://localhost:5155",
+    "secure": false,
+    "changeOrigin": true
+  }
+}

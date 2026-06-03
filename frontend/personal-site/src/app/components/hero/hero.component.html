@@ -1,0 +1,49 @@
+<section class="hero section" id="home">
+  <div class="hero-bg" aria-hidden="true"></div>
+  <div class="section-inner hero-grid">
+    <div class="hero-content">
+      <p class="hero-greeting">Hello, I'm</p>
+      <h1 class="hero-name">{{ profile().fullName }}</h1>
+      <p class="hero-title">{{ profile().title }}</p>
+      <p class="hero-tagline">
+        <span>{{ typedTagline() }}</span><span class="cursor">|</span>
+      </p>
+      <div class="hero-meta">
+        <span>📍 {{ profile().location }}</span>
+        <span>✉️ {{ profile().email }}</span>
+      </div>
+      <div class="hero-actions">
+        <button type="button" class="btn btn-primary" (click)="scrollTo('contact')">Get in touch</button>
+        <button type="button" class="btn btn-outline" (click)="scrollTo('experience')">View experience</button>
+        <a
+          class="btn btn-resume"
+          [href]="profile().resumeUrl"
+          [attr.download]="profile().resumeDownloadName"
+          target="_blank"
+          rel="noopener noreferrer">
+          ↓ Download resume
+        </a>
+      </div>
+      <div class="hero-social">
+        @for (link of profile().socialLinks; track link) {
+          <a [href]="link" target="_blank" rel="noopener noreferrer" class="social-link">
+            {{ link.includes('linkedin') ? 'LinkedIn' : 'Profile' }}
+          </a>
+        }
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="avatar-ring">
+        <img [src]="avatarSrc()" [alt]="profile().fullName + ' photo'" width="280" height="280" (error)="onAvatarError()" />
+      </div>
+      <div class="floating-card card-a">
+        <strong>2.10+</strong>
+        <span>Years experience</span>
+      </div>
+      <div class="floating-card card-b">
+        <strong>AZ-900</strong>
+        <span>Azure certified</span>
+      </div>
+    </div>
+  </div>
+</section>

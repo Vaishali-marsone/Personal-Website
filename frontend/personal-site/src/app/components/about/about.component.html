@@ -1,0 +1,95 @@
+<section class="section about" id="about">
+  <div class="section-inner">
+    <span class="section-label">About me</span>
+    <h2 class="section-title">Professional snapshot</h2>
+
+    <div class="about-layout">
+      <article class="about-main card">
+        <div class="about-intro">
+          <span class="about-badge">Aspiring Technologist</span>
+          <p class="about-summary">{{ profile().bio }}</p>
+        </div>
+
+        <div class="about-block">
+          <h3 class="about-block-title">What I bring</h3>
+          <ul class="about-highlights">
+            @for (item of profile().aboutHighlights; track item) {
+              <li>
+                <span class="highlight-icon" aria-hidden="true">✦</span>
+                <span>{{ item }}</span>
+              </li>
+            }
+          </ul>
+        </div>
+
+        <div class="about-block">
+          <h3 class="about-block-title">Core focus</h3>
+          <div class="focus-chips">
+            @for (area of profile().focusAreas; track area) {
+              <span class="chip">{{ area }}</span>
+            }
+          </div>
+        </div>
+      </article>
+
+      <aside class="about-sidebar">
+        <div class="sidebar-card card">
+          <h3 class="sidebar-title">Quick facts</h3>
+          <ul class="about-facts">
+            <li>
+              <span class="fact-icon" aria-hidden="true">💼</span>
+              <div>
+                <span class="fact-label">Current focus</span>
+                <strong>{{ profile().title }}</strong>
+              </div>
+            </li>
+            <li>
+              <span class="fact-icon" aria-hidden="true">📍</span>
+              <div>
+                <span class="fact-label">Location</span>
+                <strong>{{ profile().location }}</strong>
+              </div>
+            </li>
+            <li>
+              <span class="fact-icon" aria-hidden="true">✉️</span>
+              <div>
+                <span class="fact-label">Email</span>
+                <strong><a [href]="'mailto:' + profile().email">{{ profile().email }}</a></strong>
+              </div>
+            </li>
+            <li>
+              <span class="fact-icon" aria-hidden="true">📞</span>
+              <div>
+                <span class="fact-label">Phone</span>
+                <strong>{{ profile().phone }}</strong>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <div class="sidebar-card card languages-card">
+          <h3 class="sidebar-title">Languages</h3>
+          <div class="lang-list">
+            @for (lang of profile().languages; track lang) {
+              <span class="lang-chip">{{ lang }}</span>
+            }
+          </div>
+        </div>
+
+        <div class="sidebar-card card status-card">
+          <p class="status-label">Availability</p>
+          <p class="status-value">Open to opportunities</p>
+          <a
+            class="btn btn-outline resume-sidebar-btn"
+            [href]="profile().resumeUrl"
+            [attr.download]="profile().resumeDownloadName"
+            target="_blank"
+            rel="noopener noreferrer">
+            ↓ Download resume
+          </a>
+          <button type="button" class="btn btn-primary status-cta" (click)="scrollToContact()">Let's connect</button>
+        </div>
+      </aside>
+    </div>
+  </div>
+</section>

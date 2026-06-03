@@ -1,0 +1,52 @@
+<header class="header" [class.scrolled]="scrolled()">
+  <div class="header-inner">
+    <button type="button" class="brand" (click)="scrollTo('home')" aria-label="Go to home">
+      <span class="brand-initial">{{ profile().fullName.charAt(0) }}</span>
+      <span class="brand-name">{{ profile().fullName.split(' ')[0] }}</span>
+    </button>
+
+    <nav class="nav-desktop" aria-label="Main navigation">
+      @for (item of navItems; track item.id) {
+        <button
+          type="button"
+          class="nav-link"
+          [class.active]="activeSection() === item.id"
+          (click)="scrollTo(item.id)">
+          {{ item.label }}
+        </button>
+      }
+    </nav>
+
+    <div class="header-actions">
+      <a
+        class="btn-resume-header"
+        [href]="profile().resumeUrl"
+        [attr.download]="profile().resumeDownloadName"
+        target="_blank"
+        rel="noopener noreferrer">
+        Resume
+      </a>
+      <button
+        type="button"
+        class="theme-btn"
+        (click)="theme.toggle()"
+        [attr.aria-label]="theme.isDark() ? 'Switch to light mode' : 'Switch to dark mode'">
+        {{ theme.isDark() ? '☀️' : '🌙' }}
+      </button>
+      <button
+        type="button"
+        class="menu-toggle"
+        (click)="toggleMenu()"
+        [attr.aria-expanded]="menuOpen()"
+        aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+
+  <nav class="nav-mobile" [class.open]="menuOpen()" aria-label="Mobile navigation">
+    @for (item of navItems; track item.id) {
+      <button type="button" class="nav-link" (click)="scrollTo(item.id)">{{ item.label }}</button>
+    }
+  </nav>
+</header>

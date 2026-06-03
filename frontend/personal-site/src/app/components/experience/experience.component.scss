@@ -1,0 +1,114 @@
+.exp-timeline-hint {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1.25rem;
+}
+
+.exp-pill {
+  padding: 0.45rem 1rem;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  font-weight: 600;
+  transition: all 0.2s;
+
+  &.current {
+    border-color: var(--accent-2);
+  }
+
+  &.active {
+    background: var(--accent);
+    color: #fff;
+    border-color: var(--accent);
+  }
+}
+
+.exp-layout {
+  display: grid;
+  gap: 1.5rem;
+
+  @media (min-width: 768px) {
+    grid-template-columns: minmax(220px, 280px) 1fr;
+  }
+}
+
+.exp-tabs {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.exp-tab {
+  text-align: left;
+  padding: 1rem 1.25rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: inherit;
+  transition: border-color 0.2s, background 0.2s;
+
+  &.active {
+    border-color: var(--accent);
+    background: var(--accent-soft);
+  }
+}
+
+.exp-tab-role {
+  display: block;
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.exp-tab-company {
+  display: block;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin-top: 0.2rem;
+}
+
+.chip.current {
+  margin-top: 0.5rem;
+  background: var(--accent-2);
+  color: #fff;
+  border: none;
+}
+
+.exp-detail {
+  h3 {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 1.35rem;
+  }
+
+  header p {
+    color: var(--text-muted);
+    margin-top: 0.25rem;
+  }
+}
+
+.exp-dates {
+  font-size: 0.9rem;
+  margin-top: 0.5rem !important;
+}
+
+.tech-stack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 1.25rem 0;
+}
+
+.exp-detail h4 {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.95rem;
+  margin-bottom: 0.5rem;
+}
+
+.exp-detail ul {
+  padding-left: 1.25rem;
+  color: var(--text-muted);
+}
+
+.exp-detail li { margin-top: 0.35rem; }

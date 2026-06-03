@@ -1,0 +1,34 @@
+<section class="section education-section" id="education">
+  <div class="section-inner">
+    <span class="section-label">Education</span>
+    <h2 class="section-title">Academic journey</h2>
+    <div class="timeline">
+      @for (item of items(); track item.id; let i = $index) {
+        <article
+          class="timeline-item card"
+          [class.expanded]="expandedId() === item.id"
+          [style.animation-delay.ms]="i * 80">
+          <button type="button" class="timeline-head" (click)="toggle(item.id)" [attr.aria-expanded]="expandedId() === item.id">
+            <div class="timeline-marker" aria-hidden="true"></div>
+            <div class="timeline-summary">
+              <h3>{{ item.degree }} — {{ item.field }}</h3>
+              <p class="institution">{{ item.institution }}</p>
+              <p class="years">{{ item.startYear }} – {{ item.endYear }} · {{ item.grade }}</p>
+            </div>
+            <span class="chevron" [class.open]="expandedId() === item.id">▼</span>
+          </button>
+          @if (expandedId() === item.id) {
+            <div class="timeline-body">
+              <p>{{ item.description }}</p>
+              <ul>
+                @for (h of item.highlights; track h) {
+                  <li>{{ h }}</li>
+                }
+              </ul>
+            </div>
+          }
+        </article>
+      }
+    </div>
+  </div>
+</section>

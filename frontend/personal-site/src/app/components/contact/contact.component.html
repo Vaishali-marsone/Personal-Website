@@ -1,0 +1,55 @@
+<section class="section contact-section" id="contact">
+  <div class="section-inner">
+    <span class="section-label">Contact</span>
+    <h2 class="section-title">Let's connect</h2>
+    <div class="contact-grid">
+      <div class="contact-info card">
+        <p>Interested in collaborating or have a question? Send a message — responses typically within 48 hours.</p>
+        <ul>
+          <li>✉️ <a [href]="'mailto:' + profile().email">{{ profile().email }}</a></li>
+          <li>📞 {{ profile().phone }}</li>
+          <li>📍 {{ profile().location }}</li>
+        </ul>
+      </div>
+      <form class="contact-form card" [formGroup]="form" (ngSubmit)="onSubmit()" novalidate>
+        <label>
+          Name
+          <input type="text" formControlName="name" placeholder="Your name" [class.invalid]="form.controls.name.touched && form.controls.name.invalid" />
+          @if (form.controls.name.touched && form.controls.name.hasError('required')) {
+            <span class="field-error">Name is required.</span>
+          }
+        </label>
+        <label>
+          Email
+          <input type="email" formControlName="email" placeholder="you@example.com" [class.invalid]="form.controls.email.touched && form.controls.email.invalid" />
+          @if (form.controls.email.touched && form.controls.email.hasError('required')) {
+            <span class="field-error">Email is required.</span>
+          }
+          @if (form.controls.email.touched && form.controls.email.hasError('email')) {
+            <span class="field-error">Enter a valid email address.</span>
+          }
+        </label>
+        <label>
+          Subject
+          <input type="text" formControlName="subject" placeholder="Optional subject" />
+        </label>
+        <label>
+          Message
+          <textarea formControlName="message" rows="5" placeholder="Your message (at least 10 characters)…" [class.invalid]="form.controls.message.touched && form.controls.message.invalid"></textarea>
+          @if (form.controls.message.touched && form.controls.message.hasError('required')) {
+            <span class="field-error">Message is required.</span>
+          }
+          @if (form.controls.message.touched && form.controls.message.hasError('minlength')) {
+            <span class="field-error">Message must be at least 10 characters.</span>
+          }
+        </label>
+        @if (feedback(); as fb) {
+          <p class="feedback" [class.ok]="fb.type === 'ok'" [class.err]="fb.type === 'err'" role="alert">{{ fb.text }}</p>
+        }
+        <button type="submit" class="btn btn-primary" [disabled]="submitting()">
+          {{ submitting() ? 'Sending…' : 'Send message' }}
+        </button>
+      </form>
+    </div>
+  </div>
+</section>

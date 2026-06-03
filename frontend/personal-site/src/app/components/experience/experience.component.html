@@ -1,0 +1,57 @@
+<section class="section experience-section" id="experience">
+  <div class="section-inner">
+    <span class="section-label">Experience</span>
+    <h2 class="section-title">Professional path</h2>
+    <div class="exp-timeline-hint">
+      @for (item of sortedItems(); track item.id) {
+        <button
+          type="button"
+          class="exp-pill"
+          [class.active]="selected()?.id === item.id"
+          [class.current]="item.isCurrent"
+          (click)="select(item.id)">
+          {{ item.company }}
+        </button>
+      }
+    </div>
+    <div class="exp-layout">
+      <div class="exp-tabs" role="tablist">
+        @for (item of sortedItems(); track item.id) {
+          <button
+            type="button"
+            role="tab"
+            class="exp-tab"
+            [class.active]="selected()!.id === item.id"
+            (click)="select(item.id)">
+            <span class="exp-tab-role">{{ item.role }}</span>
+            <span class="exp-tab-company">{{ item.company }}</span>
+            @if (item.isCurrent) {
+              <span class="chip current">Current</span>
+            }
+          </button>
+        }
+      </div>
+      @if (selected(); as exp) {
+        <article class="exp-detail card" role="tabpanel">
+          <header>
+            <h3>{{ exp.role }}</h3>
+            <p>{{ exp.company }} · {{ exp.location }}</p>
+            <p class="exp-dates">{{ exp.startDate }} – {{ exp.isCurrent ? 'Present' : exp.endDate }}</p>
+          </header>
+          <p>{{ exp.description }}</p>
+          <div class="tech-stack">
+            @for (tech of exp.technologies; track tech) {
+              <span class="chip">{{ tech }}</span>
+            }
+          </div>
+          <h4>Key contributions</h4>
+          <ul>
+            @for (a of exp.achievements; track a) {
+              <li>{{ a }}</li>
+            }
+          </ul>
+        </article>
+      }
+    </div>
+  </div>
+</section>

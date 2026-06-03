@@ -1,0 +1,26 @@
+@if (loading()) {
+  <div class="loader-screen" role="status" aria-live="polite">
+    <div class="loader-spinner"></div>
+    <p>Loading portfolio…</p>
+  </div>
+} @else if (error()) {
+  <div class="error-screen">
+    <h1>Connection issue</h1>
+    <p>{{ error() }}</p>
+    <code>cd backend/PersonalSite.Api && dotnet run</code>
+  </div>
+} @else {
+  @if (content(); as data) {
+    <app-header [profile]="data.profile" />
+    <main>
+      <app-hero [profile]="data.profile" id="home" />
+      <app-about [profile]="data.profile" id="about" />
+      <app-education [items]="data.education" id="education" />
+      <app-experience [items]="data.experiences" id="experience" />
+      <app-achievements [items]="data.achievements" id="achievements" />
+      <app-skills [items]="data.skills" id="skills" />
+      <app-contact [profile]="data.profile" id="contact" />
+    </main>
+    <app-footer [profile]="data.profile" />
+  }
+}

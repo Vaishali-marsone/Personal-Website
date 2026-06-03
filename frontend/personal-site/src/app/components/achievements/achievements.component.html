@@ -1,0 +1,40 @@
+<section class="section achievements-section" id="achievements">
+  <div class="section-inner">
+    <span class="section-label">Achievements</span>
+    <h2 class="section-title">Milestones & recognition</h2>
+
+    <div class="filter-bar" role="group" aria-label="Filter achievements">
+      @for (cat of categories(); track cat) {
+        <button
+          type="button"
+          class="filter-btn"
+          [class.active]="filter() === cat"
+          (click)="setFilter(cat)">
+          {{ cat }}
+        </button>
+      }
+    </div>
+
+    <div class="achievement-grid">
+      @for (item of filtered(); track item.id) {
+        <button
+          type="button"
+          class="achievement-card"
+          [class.flipped]="flippedId() === item.id"
+          (click)="toggleFlip(item.id)"
+          [attr.aria-label]="'Toggle details for ' + item.title">
+          <div class="card-face front">
+            <span class="ach-icon">{{ icon(item.icon) }}</span>
+            <h3>{{ item.title }}</h3>
+            <p class="ach-meta">{{ item.category }} · {{ item.year }}</p>
+            <span class="flip-hint">Tap for details</span>
+          </div>
+          <div class="card-face back">
+            <p><strong>{{ item.organization }}</strong></p>
+            <p>{{ item.description }}</p>
+          </div>
+        </button>
+      }
+    </div>
+  </div>
+</section>
