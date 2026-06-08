@@ -9,8 +9,8 @@ public class SampleContentService(ContactMessageStore contactStore) : IContentSe
 {
     private static readonly ProfileDto Profile = new(
         FullName: "Vaishali Marsone",
-        Title: ".NET Developer | 2.10+ Years · ASP.NET Core · REST APIs · Azure (AZ-900)",
-        Tagline: "Software Developer at Atharva Infotech · 2.10+ years building enterprise .NET solutions.",
+        Title: ".NET Developer | 3+ Years · ASP.NET Core · REST APIs · Azure (AZ-900)",
+        Tagline: "Software Developer at Atharva Infotech · 3+ years building enterprise .NET solutions.",
         Bio: """
             I am an aspiring technologist and .NET developer from Pune with hands-on experience across
             Atharva Infotech, SoftLink International, and industry internships. I focus on translating
@@ -18,7 +18,7 @@ public class SampleContentService(ContactMessageStore contactStore) : IContentSe
             """,
         AboutHighlights: [
             "Current Software Developer at Atharva Infotech Pvt. Ltd. (Feb 2026 – Present), delivering .NET-based solutions in a collaborative engineering environment",
-            "2.10+ years of professional experience with C#, ASP.NET MVC/Core, REST APIs, and SQL Server",
+            "3+ years of professional experience with C#, ASP.NET MVC/Core, REST APIs, and SQL Server",
             "Microsoft Certified: Azure Fundamentals (AZ-900) with practical cloud learning via TechSaksham & AWS Cloud Quest",
             "B.Tech in Information Technology (CGPA 8.59) with a CNN-based capstone on crop disease detection",
             "Strong foundation from diploma in Computer Engineering (92.91%) and consistent academic performance",
@@ -175,16 +175,15 @@ public class SampleContentService(ContactMessageStore contactStore) : IContentSe
 
     private static readonly IReadOnlyList<SkillDto> Skills =
     [
-        new("C# / .NET / ASP.NET Core", 92, "Backend"),
-        new("ASP.NET MVC & RESTful Web API", 90, "Backend"),
+        new("C# / .NET / ASP.NET Core", 95, "Backend"),
+        new("ASP.NET MVC & RESTful Web API", 92, "Backend"),
         new("Entity Framework / LINQ / ADO.NET", 88, "Data"),
-        new("SQL Server", 87, "Data"),
-        new("Object-Oriented Programming (OOP)", 90, "Fundamentals"),
-        new("Angular / JavaScript / HTML / CSS", 78, "Frontend"),
-        new("Microsoft Azure (AZ-900)", 85, "Cloud"),
-        new("AWS Cloud Fundamentals", 72, "Cloud"),
-        new("Data Structures & Algorithms", 82, "Fundamentals"),
-        new("Python / Java / C++", 74, "Languages")
+        new("SQL Server", 90, "Data"),
+        new("Object-Oriented Programming (OOP)", 91, "Fundamentals"),
+        new("Angular / JavaScript / HTML / CSS", 85, "Frontend"),
+        new("Microsoft Azure (AZ-900)", 75, "Cloud"),
+        new("Data Structures & Algorithms", 72, "Fundamentals"),
+        new("Python / Java / C++", 70, "Languages")
     ];
 
     public SiteContentDto GetSiteContent() => new(Profile, Education, Experiences, Achievements, Skills);
